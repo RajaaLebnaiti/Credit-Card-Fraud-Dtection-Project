@@ -8,9 +8,7 @@ Il couvre toutes les étapes d’un workflow Machine Learning professionnel : de
 
 ## 📂 Données utilisées
 - Dataset public : **Credit Card Fraud Detection (Kaggle)**
-- Sources complémentaires possibles :
-  - APIs **Open Banking** (transactions simulées)
-  - Génération synthétique (**Faker**)
+Link: https://www.kaggle.com/datasets/dhanushnarayananr/credit-card-fraud
 
 ---
 
@@ -31,7 +29,7 @@ Le projet suit les étapes clés suivantes :
 - Pipeline automatisé  
 
 ### **3. Modélisation**
-- Baseline + modèles avancés (ex : XGBoost, LightGBM)  
+- Baseline + modèles avancés (ex : ;;;;;;;)  
 - Validation croisée  
 - Optimisation des hyperparamètres  
 - Métriques adaptées aux données déséquilibrées (AUC, F1)  

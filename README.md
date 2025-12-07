@@ -56,7 +56,7 @@ Le projet suit les étapes clés suivantes :
 ### **7. Déploiement**
 - Déploiement du modèle et d’une interface **Gradio** sur **HuggingFace Spaces**
 
-### **8. Monitoring (optionnel)**
+### **8. Monitoring **
 - Détection de drift  
 - Suivi régulier des performances  
 

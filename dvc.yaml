@@ -1,0 +1,7 @@
+stages:
+  preprocess:
+    cmd: python src/scripts/preprocessing.py 
+    deps: 
+      - src/data/raw/card_transdata.csv
+    outs:
+      - src/data/preprocessing/clean_data_card_transdata.csv

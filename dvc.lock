@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/scripts/preprocessing.py
+    deps:
+    - path: src/data/raw/card_transdata.csv
+      hash: md5
+      md5: e3e6816e421b06706ddd35897e2f1b89
+      size: 76277977
+    outs:
+    - path: src/data/preprocessing/clean_data_card_transdata.csv
+      hash: md5
+      md5: 8b1b90bc24483807d8caa3c782c2af9b
+      size: 36377313

@@ -17,33 +17,29 @@ Link: https://www.kaggle.com/datasets/dhanushnarayananr/credit-card-fraud
 Le projet suit les étapes clés suivantes :
 
 ### **1. Ingestion & Exploration**
-- Récupération et structuration des données  
+- Récupération et versionement des données  via DVC
 - Analyse exploratoire : valeurs manquantes, outliers, distributions, corrélations  
 - Sauvegarde des données propres  
 
 ### **2. Préparation & Feature Engineering**
-- Nettoyage, imputation, normalisation  
+- Nettoyage 
 - Encodage des variables  
-- Gestion du déséquilibre (SMOTE / poids de classes)  
-- Création et sélection de nouvelles features  
+- Sélection des features pertientes 
 - Pipeline automatisé  
 
 ### **3. Modélisation**
-- Baseline + modèles avancés (ex : ;;;;;;;)  
-- Validation croisée  
-- Optimisation des hyperparamètres  
-- Métriques adaptées aux données déséquilibrées (AUC, F1)  
+- Baseline + modèles avancés (RandomForest, DecisonTrees, XGBoost)  
+- Métriques adaptées aux données déséquilibrées (AUC, F1, Precision, Recall, Confusion Matrix)  
 
 ### **4. Tracking des expériences**
 - Utilisation de **MLflow** pour suivre :
   - métriques  
   - paramètres  
-  - artefacts  
   - versions du modèle  
 
 ### **5. Tests & Qualité**
-- Tests unitaires (nettoyage, encodage, pipeline)  
-- Tests d’intégration (pipeline complet)  
+- Tests unitaires 
+ 
 
 ### **6. CI/CD**
 - GitHub Actions pour :
@@ -53,6 +49,7 @@ Le projet suit les étapes clés suivantes :
 
 ### **7. Déploiement**
 - Déploiement du modèle et d’une interface **Gradio** sur **HuggingFace Spaces**
+Link: RajaaLE/Credit_Card_Fraud_Dtection_Project
 
 ### **8. Monitoring **
 - Détection de drift  

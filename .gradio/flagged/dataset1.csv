@@ -1,0 +1,2 @@
+distance_from_home,distance_from_last_transaction,repeat_retailer,used_chip,used_pin_number,online_order,output,timestamp
+10,10,1,1,1,0,"{""Prediction"": ""Not Fraud \u2705"", ""Fraud Probability"": 0}",2025-12-22 19:57:04.798731

@@ -35,7 +35,7 @@ def RandomForestModel(params, X_train, y_train):
 
 # Function to make predictions with treshold
 def predict_with_treshold(model, X_test, treshold= 0.2):
-    y_proba = model.predict_proba(X_test)[:,1]
+    y_proba = model.predict_proba(X_test)[:, 1]
     return (y_proba >= treshold).astype(int)
   
 

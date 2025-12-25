@@ -21,11 +21,6 @@ jobs:
         run: |
           pip install huggingface_hub joblib
 
-# To fix the error of file not found
-      - name: Pull DVC data
-        run: |
-          pip install dvc
-          dvc pull
 
       - name: Train model
         run: dvc repro

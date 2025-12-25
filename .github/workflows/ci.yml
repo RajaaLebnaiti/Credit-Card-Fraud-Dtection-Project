@@ -1,0 +1,29 @@
+name: CI Pipeline Credit Card Fraud Detection
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    # telecharger le code dans le runner
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+    # Installer python
+      - name: Set up python
+        uses: actions/setup-pyton@v4
+        with:
+          python-version: "3.10"
+
+    # Installer les dépendances
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+    
+    # Runner les tests unitiares
+      - name: Run unit tests
+        run: pytest -q
+      

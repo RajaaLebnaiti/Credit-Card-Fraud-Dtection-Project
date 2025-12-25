@@ -1,6 +1,6 @@
 src/notebooks/mlruns/
 .pytest_cache/
-src/models/final_model_compressed.joblib
+src/models/
 *.pkl
 deploy/model/
 deploy/final_model.pkl

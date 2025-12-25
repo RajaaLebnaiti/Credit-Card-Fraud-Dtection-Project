@@ -3,5 +3,17 @@ stages:
     cmd: python src/scripts/preprocessing.py 
     deps: 
       - src/data/raw/card_transdata.csv
+      - src/scripts/preprocessing.py
     outs:
       - src/data/preprocessing/clean_data_card_transdata.csv
+
+
+  train:
+    cmd: python src/scripts/training.py
+    deps: 
+      - src/data/preprocessing/clean_data_card_transdata.csv
+      - src/scripts/training.py
+    outs:
+      - src/models/final_model_compressed.joblib
+    metrics:
+      - src/models/metrics/metrics.csv

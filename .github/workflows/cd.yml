@@ -1,0 +1,55 @@
+name: CD - Deploy the model to Hugging Face
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install huggingface_hub joblib
+
+      - name: Upload files to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.TOKEN_CREDIT_CARD_FRAUD_DETECTION }}
+        run: |
+          python - <<EOF
+          from huggingface_hub import HfApi
+
+          api = HfApi(token="$HF_TOKEN")
+
+          repo_id = "RajaaLE/Credit_Card_Fraud_Dtection_Project"
+
+          api.upload_file(
+              path_or_fileobj="src/models/final_model_compressed.joblib",
+              path_in_repo="final_model_compressed.joblib",
+              repo_id=repo_id,
+              repo_type="space"  
+          )
+
+          api.upload_file(
+              path_or_fileobj="app.py",
+              path_in_repo="app.py",
+              repo_id=repo_id,
+              repo_type="space"
+          )
+
+          api.upload_file(
+              path_or_fileobj="requirements.txt",
+              path_in_repo="requirements.txt",
+              repo_id=repo_id,
+              repo_type="space"
+          )
+          EOF

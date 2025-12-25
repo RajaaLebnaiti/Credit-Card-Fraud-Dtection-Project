@@ -1,59 +1,56 @@
-name: CD - Deploy the model to Hugging Face
+name: CD - Deploy model to Hugging Face
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    needs: ci   # Ne s’exécute que si le workflow CI a réussi
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
-        run: |
-          pip install huggingface_hub joblib
+      - run: |
+          pip install -r requirements.txt
+          pip install huggingface_hub joblib pandas scikit-learn
 
-      - name: Upload files to Hugging Face
+      - name: Train model
+        run: |
+          python src/scripts/training.py
+
+      - name: List model files
+        run: ls -lh src/models
+
+      - name: Upload model and app to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.TOKEN_CREDIT_CARD_FRAUD_DETECTION }}
         run: |
           python - <<EOF
           from huggingface_hub import HfApi
+          import os
 
-          api = HfApi(token="$HF_TOKEN")
-
+          api = HfApi(token=os.environ["HF_TOKEN"])
           repo_id = "RajaaLE/Credit_Card_Fraud_Dtection_Project"
 
-          api.upload_file(
-              path_or_fileobj="src/models/final_model_ultra_compressed.joblib",
-              path_in_repo="final_model_compressed.joblib",
-              repo_id=repo_id,
-              repo_type="space"  
-          )
+          # Liste des fichiers à uploader
+          files_to_upload = {
+              "src/models/final_model_ultra_compressed.joblib": "final_model_ultra_compressed.joblib",
+              "app.py": "app.py",
+              "requirements.txt": "requirements.txt"
+          }
 
-
-          api.upload_file(
-              path_or_fileobj="app.py",
-              path_in_repo="app.py",
-              repo_id=repo_id,
-              repo_type="space"
-          )
-
-          api.upload_file(
-              path_or_fileobj="requirements.txt",
-              path_in_repo="requirements.txt",
-              repo_id=repo_id,
-              repo_type="space"
-          )
+          for local_path, repo_path in files_to_upload.items():
+              print(f"Uploading {local_path} to {repo_path}")
+              api.upload_file(
+                  path_or_fileobj=local_path,
+                  path_in_repo=repo_path,
+                  repo_id=repo_id,
+                  repo_type="space"  # 'space' pour Hugging Face Space
+              )
           EOF
-
-
-

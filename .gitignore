@@ -4,3 +4,4 @@ src/models/
 *.pkl
 deploy/model/
 deploy/final_model.pkl
+monitor/generated_data.csv

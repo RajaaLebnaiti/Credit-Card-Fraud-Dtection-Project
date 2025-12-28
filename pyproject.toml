@@ -1,0 +1,16 @@
+[project]
+name = "credit-card-fraud-detection"
+version = "0.1.0"
+description = "MLOps project for credit card fraud detection"
+authors = [{name = "Your Name"}]
+
+dependencies = [
+    "pandas",
+    "scikit-learn",
+    "numpy",
+    "dvc",
+    "evidently",
+    "fastapi",
+    "uvicorn",
+    "gradio"
+]

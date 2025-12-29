@@ -7,10 +7,8 @@ import joblib
 # Charger le modèle avec joblib 
 model = joblib.load("C:/Users/hp/Desktop/Credit Card Fraud Detection Project/src/models/final_model_compressed.joblib")
 
-# Seuil métier
 threshold = 0.20
 
-# 🔥 Récupérer automatiquement l'ordre exact des features
 features = list(model.feature_names_in_)
 
 def predict_fraud(*inputs):
@@ -19,7 +17,7 @@ def predict_fraud(*inputs):
     prediction = int(proba >= threshold)
 
     return {
-        "Prediction": "Fraud 🚨" if prediction else "Not Fraud ✅",
+        "Prediction": "Fraud" if prediction else "Not Fraud",
         "Fraud Probability": round(proba, 3)
     }
 

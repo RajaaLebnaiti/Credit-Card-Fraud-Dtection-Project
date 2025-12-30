@@ -5,7 +5,9 @@ import joblib
 
 
 # Charger le modèle avec joblib 
-model = joblib.load("C:/Users/hp/Desktop/Credit Card Fraud Detection Project/src/models/final_model_compressed.joblib")
+#model = joblib.load("C:/Users/hp/Desktop/Credit Card Fraud Detection Project/src/models/final_model_compressed.joblib") # EN LOCAL
+model = joblib.load("/app/src/models/final_model_compressed.joblib") # POUR DOCKER FILE !!!!
+
 
 threshold = 0.20
 
@@ -29,4 +31,4 @@ interface = gr.Interface(
     description="Random Forest fraud detection model (threshold = 0.20)"
 )
 
-interface.launch()
+interface.launch(server_name="0.0.0.0", server_port=7860)

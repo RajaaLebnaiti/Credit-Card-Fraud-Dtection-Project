@@ -55,7 +55,7 @@ Link: RajaaLE/Credit_Card_Fraud_Dtection_Project
 - Suivi régulier des performances  
 
 ### **9. Dockerisation **
-Conteneurisation du projet via Docker
-Link to docker image : https://hub.docker.com/repository/docker/rajaa191/credit-card-fraud-detection/general
+- Conteneurisation du projet via Docker
+- Link to docker image : https://hub.docker.com/repository/docker/rajaa191/credit-card-fraud-detection/general
 ---
 

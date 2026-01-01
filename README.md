@@ -2,7 +2,7 @@
 
 ## 📌 Présentation du projet
 Ce projet vise à construire un pipeline complet de **détection de fraude** sur des transactions bancaires.  
-Il couvre toutes les étapes d’un workflow Machine Learning professionnel : de l’ingestion des données jusqu’au déploiement et au monitoring du modèle.
+Il couvre toutes les étapes d’un workflow MLOps , Machine Learning professionnel : de l’ingestion des données jusqu’au déploiement et au monitoring du modèle.
 
 ---
 
@@ -38,22 +38,24 @@ Le projet suit les étapes clés suivantes :
   - versions du modèle  
 
 ### **5. Tests & Qualité**
-- Tests unitaires 
+- Tests unitaires avec Pytest pour chaque script (preprocessing / training)
  
 
 ### **6. CI/CD**
 - GitHub Actions pour :
-  - exécuter les tests  
-  - vérifier la qualité du code  
-  - préparer les modèles  
+  - exécuter les tests unitaires à chaque push  
+  - vérifier le bon fonctionnement du code  
 
 ### **7. Déploiement**
 - Déploiement du modèle et d’une interface **Gradio** sur **HuggingFace Spaces**
 Link: RajaaLE/Credit_Card_Fraud_Dtection_Project
 
 ### **8. Monitoring **
-- Détection de drift  
+- Détection de drift via EvidentlyAI 
 - Suivi régulier des performances  
 
+### **9. Dockerisation **
+Conteneurisation du projet via Docker
+Link to docker image : https://hub.docker.com/repository/docker/rajaa191/credit-card-fraud-detection/general
 ---
 

@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import numpy as np
 
 RAW_DATA_PATH = "src/data/raw/card_transdata.csv"
 CLEAN_DATA_PATH = "src/data/preprocessing/clean_data_card_transdata.csv"
@@ -10,6 +11,10 @@ def preprocess_data(df):
     df['distance_from_home'] = df['distance_from_home'].round(2)
     df['distance_from_last_transaction'] = df['distance_from_last_transaction'].round(2)
     df['ratio_to_median_purchase_price']= df['ratio_to_median_purchase_price'].round(2)
+    
+    df['log_distance_from_home'] = np.log1p(df['distance_from_home']).round(2)
+    df['log_distance_from_last_transaction'] = np.sqrt(df['distance_from_last_transaction']).round(2)
+
     return df
 
 

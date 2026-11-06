@@ -7,9 +7,10 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 import os
 import joblib
 
+
 # Function to split the data into features and target 
 def split_data_features_target(df):
-    X = df.drop(columns=['fraud', 'ratio_to_median_purchase_price'])    
+    X = df.drop(columns=['fraud', 'distance_from_last_transaction', 'distance_from_home'])    
     y = df['fraud']
     return X, y
 

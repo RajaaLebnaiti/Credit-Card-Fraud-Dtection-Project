@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import precision_score, recall_score, f1_score
+from sklearn.metrics import recall_score, f1_score
 
 import os
 import joblib
@@ -19,7 +19,7 @@ def split_data_features_target(df):
 # Function to split the data into training and testing
 def split_data_train_test(df, test_size= 0.2, random_state= 42):
     X, y = split_data_features_target(df)
-    return train_test_split(X, y, test_size= test_size, random_state= random_state)
+    return train_test_split(X, y, test_size= test_size, random_state= random_state, startify= y)
 
 
 # Function of training the model
@@ -44,7 +44,6 @@ def predict_with_treshold(model, X_test, treshold= 0.2):
 # Function to calculate metrics
 def compute_metrics(y_test, y_pred_t):
     return{
-        "precision": precision_score(y_test, y_pred_t),
         "recall": recall_score(y_test, y_pred_t),
         "f1": f1_score(y_test, y_pred_t)
     }    

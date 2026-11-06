@@ -19,7 +19,7 @@ def split_data_features_target(df):
 # Function to split the data into training and testing
 def split_data_train_test(df, test_size= 0.2, random_state= 42):
     X, y = split_data_features_target(df)
-    return train_test_split(X, y, test_size= test_size, random_state= random_state, startify= y)
+    return train_test_split(X, y, test_size= test_size, random_state= random_state, stratify= y)
 
 
 # Function of training the model
